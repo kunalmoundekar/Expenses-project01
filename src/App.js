@@ -4,28 +4,37 @@ import Expenses from './componts/Expense';
 import ExpensesData from './componts/ExpensesData';
 import './App.css'
 
-// import React, { useState } from 'react';
+import  { useState } from 'react';
 
 import NewExpenses from './componts/NewExpenses/NewExpenses';
 
 
-const App = () => {
+const App = (props) => {
 
+
+  const [expenses, setExpenses] = useState(ExpensesData);
+
+
+ 
   const AppsaveExpensesHandler = (expenseData) => {
-    const AppupdatedExpenseData = {
-      ...expenseData,
-    };
+    setExpenses((prevExpenses) => [expenseData, ...prevExpenses]);
+    console.log(expenseData);
+  };
 
-    console.log(AppupdatedExpenseData)
-  }
+  
+  
 
   return (
     <div>
       <h1 className='heading1'>My Expense ! </h1>
       <NewExpenses AppsaveExpensesHandler={AppsaveExpensesHandler} />
-      <Expenses item={ExpensesData} />
+      
+      <Expenses item={expenses} />
+
     </div>
   );
 }; 
 
 export default App;
+
+
