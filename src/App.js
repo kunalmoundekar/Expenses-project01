@@ -11,26 +11,19 @@ import NewExpenses from './componts/NewExpenses/NewExpenses';
 
 const App = (props) => {
 
-
   const [expenses, setExpenses] = useState(ExpensesData);
-
-
  
   const AppsaveExpensesHandler = (expenseData) => {
     setExpenses((prevExpenses) => [expenseData, ...prevExpenses]);
-    console.log(expenseData);
+    
   };
 
   
-  
-
   return (
     <div>
       <h1 className='heading1'>My Expense ! </h1>
       <NewExpenses AppsaveExpensesHandler={AppsaveExpensesHandler} />
-      
       <Expenses item={expenses} />
-
     </div>
   );
 }; 
